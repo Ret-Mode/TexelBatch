@@ -15,7 +15,7 @@ buildscript {
 
 
 allprojects {
-    group = 'com.retmode'
+    group = 'com.retmode.texel'
     version = 'main-SNAPSHOT'
 
     ext {
