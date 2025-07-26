@@ -15,7 +15,7 @@ buildscript {
 }
 
 allprojects {
-    group = 'com.retmode.texel'
+    group = 'com.retmode'
     version = 'main-SNAPSHOT'
 
     ext {
@@ -25,7 +25,7 @@ allprojects {
 }
 
 if(JavaVersion.current().isJava9Compatible()) {
-    compileJava.targetCompatibility = 8
+    //compileJava.targetCompatibility = 8
     allprojects {
         tasks.withType(JavaCompile) {
             options.release.set(8)
@@ -35,14 +35,14 @@ if(JavaVersion.current().isJava9Compatible()) {
 
 project(":texelbatch") {
     apply plugin: "java-library"
-    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
+        archiveClassifier = 'sources'
         from sourceSets.main.allSource
     }
 
