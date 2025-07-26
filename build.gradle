@@ -8,11 +8,11 @@ buildscript {
     google()
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+    jcenter()
   }
-  dependencies {
-    api "com.badlogicgames.gdx:gdx:$gdxVersion"
-  }
+
 }
+
 
 allprojects {
     group = 'com.retmode'
@@ -22,10 +22,36 @@ allprojects {
         appName = "texelbatch"
         gdxVersion = '1.9.10'
     }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'https://s01.oss.sonatype.org' }
+        gradlePluginPortal()
+        
+        google()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+        jcenter()
+    }
+
 }
 
+
+
+
+
 subprojects {
-    publishing {
+	apply plugin: 'java-library'
+	apply plugin: 'maven-publish'
+	
+	sourceCompatibility = 1.8 // java 8
+	targetCompatibility = 1.8
+
+	java {
+		withSourcesJar()
+	}
+
+	publishing {
 		publications {
 			maven(MavenPublication) {
 				groupId project.group
@@ -35,31 +61,68 @@ subprojects {
 			}
 		}
 	}
+
+
 }
 
-if(JavaVersion.current().isJava9Compatible()) {
-    //compileJava.targetCompatibility = 8
-    allprojects {
-        tasks.withType(JavaCompile) {
-            options.release.set(8)
-        }
-    }
-}
+// subprojects {
+//     publishing {
+// 		publications {
+// 			maven(MavenPublication) {
+// 				groupId project.group
+// 				artifactId project.name
+// 				version project.version
+// 				from components.java
+// 			}
+// 		}
+// 	}
+// }
 
-project(":texelbatch") {
-    apply plugin: "java-library"
-    apply plugin: 'maven-publish'
 
-    dependencies {
-        api "com.badlogicgames.gdx:gdx:$gdxVersion"
-    }
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        archiveClassifier = 'sources'
-        from sourceSets.main.allSource
-    }
+// buildscript {
+//   repositories {
+//     mavenLocal()
+//     mavenCentral()
+//     maven { url 'https://s01.oss.sonatype.org' }
+//     gradlePluginPortal()
+    
+//     google()
+//     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+//     maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+//   }
+//   dependencies {
+//     api "com.badlogicgames.gdx:gdx:$gdxVersion"
+//   }
+// }
 
-    artifacts {
-        archives sourcesJar
-    }
-}
+
+
+
+
+// if(JavaVersion.current().isJava9Compatible()) {
+//     //compileJava.targetCompatibility = 8
+//     allprojects {
+//         tasks.withType(JavaCompile) {
+//             options.release.set(8)
+//         }
+//     }
+// }
+
+// project(":texelbatch") {
+//     apply plugin: "java-library"
+//     apply plugin: 'maven-publish'
+
+//     dependencies {
+//         api "com.badlogicgames.gdx:gdx:$gdxVersion"
+//     }
+
+//     task sourcesJar(type: Jar, dependsOn: classes) {
+//         archiveClassifier = 'sources'
+//         from sourceSets.main.allSource
+//     }
+
+//     artifacts {
+//         archives sourcesJar
+//     }
+// }
