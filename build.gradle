@@ -24,6 +24,19 @@ allprojects {
     }
 }
 
+subprojects {
+    publishing {
+		publications {
+			maven(MavenPublication) {
+				groupId project.group
+				artifactId project.name
+				version project.version
+				from components.java
+			}
+		}
+	}
+}
+
 if(JavaVersion.current().isJava9Compatible()) {
     //compileJava.targetCompatibility = 8
     allprojects {
