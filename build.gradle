@@ -1,0 +1,52 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://s01.oss.sonatype.org' }
+    gradlePluginPortal()
+    
+    google()
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+  }
+  dependencies {
+
+  }
+}
+
+allprojects {
+    group = 'com.retmode.texel'
+    version = 'main-SNAPSHOT'
+
+    ext {
+        appName = "texelbatch"
+        gdxVersion = '1.9.10'
+    }
+}
+
+if(JavaVersion.current().isJava9Compatible()) {
+    compileJava.targetCompatibility = 8
+    allprojects {
+        tasks.withType(JavaCompile) {
+            options.release.set(8)
+        }
+    }
+}
+
+project(":texelbatch") {
+    apply plugin: "java-library"
+    apply plugin: 'maven'
+
+    dependencies {
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts {
+        archives sourcesJar
+    }
+}
