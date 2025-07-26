@@ -54,9 +54,9 @@ subprojects {
 	publishing {
 		publications {
 			maven(MavenPublication) {
-				groupId project.group
-				artifactId project.name
-				version project.version
+				groupId 'com.retmode.texel'
+				artifactId 'texelbatch'
+				version 'main-SNAPSHOT'
 				from components.java
 			}
 		}
