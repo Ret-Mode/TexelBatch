@@ -20,7 +20,7 @@ allprojects {
 
     ext {
         appName = "texelbatch"
-        gdxVersion = '1.9.10'
+        gdxVersion = '1.13.5'
     }
     repositories {
         mavenLocal()
@@ -37,9 +37,6 @@ allprojects {
 }
 
 
-
-
-
 subprojects {
 	apply plugin: 'java-library'
 	apply plugin: 'maven-publish'
@@ -54,75 +51,12 @@ subprojects {
 	publishing {
 		publications {
 			maven(MavenPublication) {
-				groupId 'com.github.Ret-Mode'
-				artifactId 'TexelBatch'
-				version 'main-SNAPSHOT'
+				groupId 'com.retmode.texel'
+				artifactId 'texelbatch'
+				version '1.0.0'
 				from components.java
+
 			}
 		}
 	}
-
-
 }
-
-// subprojects {
-//     publishing {
-// 		publications {
-// 			maven(MavenPublication) {
-// 				groupId project.group
-// 				artifactId project.name
-// 				version project.version
-// 				from components.java
-// 			}
-// 		}
-// 	}
-// }
-
-
-
-// buildscript {
-//   repositories {
-//     mavenLocal()
-//     mavenCentral()
-//     maven { url 'https://s01.oss.sonatype.org' }
-//     gradlePluginPortal()
-    
-//     google()
-//     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-//     maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
-//   }
-//   dependencies {
-//     api "com.badlogicgames.gdx:gdx:$gdxVersion"
-//   }
-// }
-
-
-
-
-
-// if(JavaVersion.current().isJava9Compatible()) {
-//     //compileJava.targetCompatibility = 8
-//     allprojects {
-//         tasks.withType(JavaCompile) {
-//             options.release.set(8)
-//         }
-//     }
-// }
-
-// project(":texelbatch") {
-//     apply plugin: "java-library"
-//     apply plugin: 'maven-publish'
-
-//     dependencies {
-//         api "com.badlogicgames.gdx:gdx:$gdxVersion"
-//     }
-
-//     task sourcesJar(type: Jar, dependsOn: classes) {
-//         archiveClassifier = 'sources'
-//         from sourceSets.main.allSource
-//     }
-
-//     artifacts {
-//         archives sourcesJar
-//     }
-// }
