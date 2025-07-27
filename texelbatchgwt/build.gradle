@@ -1,5 +1,6 @@
 def projectName = "texelbatchgwt"
 
+mavenPlainJavadocJar.archiveBaseName.set(projectName)
 sourceSets.main.java.exclude "**/System.java"
 
 // There's pretty much no reason to use any encoding other than UTF-8 .
