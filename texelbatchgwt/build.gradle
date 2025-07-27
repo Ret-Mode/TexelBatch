@@ -90,9 +90,9 @@ dependencies {
 // from `api` to `testImplementation` .
     //api "com.badlogicgames.gdx:gdx:$gdxVersion"
     api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
-    api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-    api "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
-    implementation "com.google.gwt:gwt-user:$gwt"
+    //api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+    //api "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+    //implementation "com.google.gwt:gwt-user:$gwt"
     //implementation "com.google.gwt:gwt-dev:$gwt"
     implementation project(path: ':texelbatch')
 // "lwjgl3" could be changed to "headless" for command-line-only testing.
