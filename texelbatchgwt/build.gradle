@@ -1,5 +1,6 @@
 def projectName = "texelbatchgwt"
 
+sourceSets.main.java.exclude "**/System.java"
 
 // There's pretty much no reason to use any encoding other than UTF-8 .
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
