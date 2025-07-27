@@ -19,7 +19,7 @@ subprojects {
 
 
     // This sets the Javadoc JAR to have hopefully the correct name. This may need adjustment.
-    mavenPlainJavadocJar.archiveBaseName.set(project.name)
+    
     
     compileJava {
         // The default Java language level this targets is 8, which is as low as current
