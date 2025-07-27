@@ -99,6 +99,7 @@ public class TexelBatch extends SpriteBatch {
 		//}
 		String fragmentShader = "#ifdef GL_ES\n" //
 			+ "#define LOWP lowp\n" //
+			+ "#extension GL_OES_standard_derivatives : enable\n"
 			+ "precision mediump float;\n" //
 			+ "#else\n" //
 			+ "#define LOWP \n" //
