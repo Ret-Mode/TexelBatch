@@ -12,9 +12,11 @@ public class TexelBatchProviderGwt implements TexelBatchProvider {
         TexelBatchSingleton.set(new TexelBatchProviderGwt());
     }
 
-    public SpriteBatch provide(AbstractGraphics graphics, TexelBatchVersion version) {
-        if (!graphics.isGL30Available()) {
-            GwtGL20 context = (GwtGL20)graphics.getGL20();
+    public SpriteBatch provide(Object graphics, TexelBatchVersion version) {
+        AbstractGraphics gdxGraphics = (AbstractGraphics)graphics;
+        
+        if (!gdxGraphics.isGL30Available()) {
+            GwtGL20 context = (GwtGL20)gdxGraphics.getGL20();
             Gdx.app.log("Loading extension resulted in", ""+context.gl.getExtension("OES_standard_derivatives").toString());
         }
         switch (version) {

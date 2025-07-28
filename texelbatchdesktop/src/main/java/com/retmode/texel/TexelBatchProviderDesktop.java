@@ -9,7 +9,7 @@ public class TexelBatchProviderDesktop implements TexelBatchProvider {
         TexelBatchSingleton.set(new TexelBatchProviderDesktop());
     }
 
-    public SpriteBatch provide(AbstractGraphics graphics, TexelBatchVersion version) {
+    public SpriteBatch provide(Object graphics, TexelBatchVersion version) {
         switch (version) {
             case EASY: return new TexelBatchEasy();
             case NORMAL: return new TexelBatch();

@@ -10,5 +10,5 @@ public interface TexelBatchProvider {
         NORMAL
     };
 
-    SpriteBatch provide(AbstractGraphics graphics, TexelBatchVersion version);
+    SpriteBatch provide(Object graphics, TexelBatchVersion version);
 }
