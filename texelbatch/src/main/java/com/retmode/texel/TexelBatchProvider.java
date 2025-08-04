@@ -1,14 +1,25 @@
 package com.retmode.texel;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.AbstractGraphics;
 
-public interface TexelBatchProvider {
+public abstract class TexelBatchProvider {
     
-    enum TexelBatchVersion {
-        EASY,
-        NORMAL
+    private static TexelBatchProvider instance = null;
+    protected static void set(TexelBatchProvider instance) {
+        TexelBatchProvider.instance = instance;
+    }
+
+    public static TexelBatchProvider get() {
+        return TexelBatchProvider.instance;
+    }
+
+    public enum TexelBatchVersion {
+        TEST,
+        TEXEL,
+        YE_GOOD_OLD_BATCH
     };
 
-    SpriteBatch provide(Object graphics, TexelBatchVersion version);
+    abstract public SpriteBatch provide(TexelBatchVersion version);
+    abstract public SpriteBatch provide(TexelBatchVersion version, int size);
+
 }

@@ -1,6 +1,5 @@
 
 
 dependencies {
-    api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
     implementation project(path: ':texelbatch')
 }

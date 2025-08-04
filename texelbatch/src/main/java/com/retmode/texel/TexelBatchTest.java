@@ -5,17 +5,17 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
-public class TexelBatchEasy extends TexelBatch {
+public class TexelBatchTest extends TexelBatch {
 
     protected Texture currentTexture;
 
     
-    public TexelBatchEasy () {
-		super();
+    public TexelBatchTest (ShaderProgram program) {
+		super(program);
 	}
 
-	public TexelBatchEasy (int size) {
-		super(size);
+	public TexelBatchTest (int size, ShaderProgram program) {
+		super(size, program);
 	}
 
 	@Override

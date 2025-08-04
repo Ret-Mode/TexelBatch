@@ -12,5 +12,5 @@ plugins {
 }
 
 include 'texelbatch'
-include 'texelbatchgwt'
-include 'texelbatchdesktop'
+include 'texelbatchgles'
+include 'texelbatchgl'
