@@ -14,7 +14,7 @@ public class TexelBatch extends SpriteBatch {
     
     public TexelBatch (ShaderProgram program) {
 		super(1000, program);
-        program = getShader();
+        this.program = program;
 
 	}
 
