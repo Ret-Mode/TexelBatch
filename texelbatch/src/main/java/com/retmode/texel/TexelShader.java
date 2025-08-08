@@ -115,8 +115,8 @@ public class TexelShader {
 
     static public ShaderProgram createTexelShader (GLMode mode) {
 		String header = getHeader(mode);
-        String precision = getPrecision(mode);
         String extension = getExtension(mode);
+        String precision = getPrecision(mode);
         String attributeIn = getAttribIn(mode);
         String varyingVert = getVaryingVert(mode);
         String varyingFrag = getVaryingFrag(mode);
@@ -195,8 +195,8 @@ public class TexelShader {
 			
 		//}
 		String fragmentShader = header
-            + precision
             + extension
+            + precision
 			+ varyingFrag + " LOWP vec4 v_color;\n" //
 			+ varyingFrag + " vec2 v_texCoords;\n" //
 			+ "uniform sampler2D u_texture;\n" //
