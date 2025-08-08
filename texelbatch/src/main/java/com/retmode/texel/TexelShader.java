@@ -245,8 +245,8 @@ public class TexelShader {
 			+ "}\n";
 
 		String fragmentShader = header
-            + precision
             + extension
+            + precision
 			+ varyingFrag + " LOWP vec4 v_color;\n" //
 			+ varyingFrag + " vec2 v_texCoords;\n" //
 			+ "uniform sampler2D u_texture;\n" //
