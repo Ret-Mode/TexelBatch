@@ -1,6 +1,7 @@
 package com.retmode.texel;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class TexelBatchProviderGLES extends TexelBatchProvider {
@@ -9,7 +10,7 @@ public class TexelBatchProviderGLES extends TexelBatchProvider {
         TexelBatchProvider.set(new TexelBatchProviderGLES());
     }
 
-    public SpriteBatch provide(TexelBatchVersion version, int size) {
+    public Batch provide(TexelBatchVersion version, int size) {
         
         TexelShader.GLMode mode;
         if (!Gdx.graphics.isGL30Available()) {
@@ -34,7 +35,7 @@ public class TexelBatchProviderGLES extends TexelBatchProvider {
         }
     }
 
-    public SpriteBatch provide(TexelBatchVersion version) {
+    public Batch provide(TexelBatchVersion version) {
         return provide(version, 1000);
     }
 }
