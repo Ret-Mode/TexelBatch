@@ -1,7 +1,5 @@
 package com.retmode.texel;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
-
 public abstract class TexelBatchProvider {
 
     private static TexelBatchProvider instance = null;
@@ -19,7 +17,7 @@ public abstract class TexelBatchProvider {
         YE_GOOD_OLD_BATCH
     };
 
-    abstract public Batch provide(TexelBatchVersion version);
-    abstract public Batch provide(TexelBatchVersion version, int size);
+    abstract public ExtendedBatch provide(TexelBatchVersion version);
+    abstract public ExtendedBatch provide(TexelBatchVersion version, int size);
 
 }

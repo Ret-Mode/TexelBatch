@@ -45,7 +45,7 @@ import java.nio.Buffer;
  * @author mzechner
  * @author Nathan Sweet */
 
-public class TexelBatch implements Batch {
+public class TexelBatch implements ExtendedBatch {
     /** @deprecated Do not use, this field is for testing only and is likely to be removed. Sets the {@link VertexDataType} to be
      *             used when gles 3 is not available, defaults to {@link VertexDataType#VertexArray}. */
     @Deprecated public static VertexDataType defaultVertexDataType = VertexDataType.VertexBufferObject;
@@ -95,7 +95,7 @@ public class TexelBatch implements Batch {
     protected float uvScale = 0.5f;
     protected float blendParam = 0.5f;
 
-    public void setUvScale(float scale) {
+    public void setUvOffsetInPixels(float scale) {
         uvScale = scale;
     }
 
@@ -146,12 +146,6 @@ public class TexelBatch implements Batch {
 
         shader = defaultShader;
 
-        // //setBlendParam(0.7f);
-        // // Pre bind the mesh to force the upload of indices data.
-        // if (vertexDataType != VertexDataType.VertexArray) {
-        //     mesh.getIndexData().bind();
-        //     mesh.getIndexData().unbind();
-        // }
     }
 
     @Override

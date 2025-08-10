@@ -9,8 +9,8 @@ public class TexelBatchTest extends TexelBatch {
     protected Texture currentTexture;
 
 
-    public TexelBatchTest (ShaderProgram program) {
-		this(1000,program);
+   public TexelBatchTest (ShaderProgram program) {
+		this(1000, program);
 	}
 
 	public TexelBatchTest (int size, ShaderProgram program) {

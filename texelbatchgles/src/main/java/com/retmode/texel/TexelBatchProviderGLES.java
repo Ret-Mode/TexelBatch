@@ -1,8 +1,6 @@
 package com.retmode.texel;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class TexelBatchProviderGLES extends TexelBatchProvider {
 
@@ -10,7 +8,7 @@ public class TexelBatchProviderGLES extends TexelBatchProvider {
         TexelBatchProvider.set(new TexelBatchProviderGLES());
     }
 
-    public Batch provide(TexelBatchVersion version, int size) {
+    public ExtendedBatch provide(TexelBatchVersion version, int size) {
         
         TexelShader.GLMode mode;
         if (!Gdx.graphics.isGL30Available()) {
@@ -26,16 +24,16 @@ public class TexelBatchProviderGLES extends TexelBatchProvider {
             switch (version) {
                 case TEST: return new TexelBatchTest(size, TexelShader.createTexelShader(mode));
                 case TEXEL: return new TexelBatch(size, TexelShader.createTexelShader(mode));
-                case YE_GOOD_OLD_BATCH: default: return new SpriteBatch(size, TexelShader.createDefaultBatchShader(mode));
+                case YE_GOOD_OLD_BATCH: default: return new GoodOldBatch(size, TexelShader.createDefaultBatchShader(mode));
             }
         } catch (Exception e) {
             Gdx.app.log("Texel:",e.toString());
             Gdx.app.log("Texel:","Got exception when generating batch, fallback to default SpriteBatch");
-            return new SpriteBatch(size, TexelShader.createDefaultBatchShader(mode));
+            return new GoodOldBatch(size, TexelShader.createDefaultBatchShader(mode));
         }
     }
 
-    public Batch provide(TexelBatchVersion version) {
+    public ExtendedBatch provide(TexelBatchVersion version) {
         return provide(version, 1000);
     }
 }
